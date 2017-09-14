@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <meta charset="utf-8">
+        <script src="d3.min.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <h1>Page Title</h1>
+        </div>
+        <script>
+            var data;
+            d3.json("http://atlas.media.mit.edu/hs92/export/2010/usa/all/show/", function(error, json) {
+                if (error) return console.warn(error);
+                data = json;
+                console.log(data);
+            });
+        </script>
+    </body>
+</html>

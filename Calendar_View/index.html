@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar View Graph</title>
+  <link rel="stylesheet" type="text/css" href="src/calendar-heatmap.css">
+</head>
+<body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.min.js" charset="utf-8"></script>
+  <script src="https://d3js.org/d3-path.v1.min.js"></script>
+  <script src="https://d3js.org/d3-shape.v1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="src/calendar-heatmap.js"></script>
+
+  <script>
+    (function () {
+      // Initialize random data for the demo
+      var now = moment().endOf('day').toDate();
+      var time_ago = moment().startOf('day').subtract(10, 'year').toDate();
+      var example_data = d3.timeDays(time_ago, now).map(function (dateElement, index) {
+        return {
+          date: dateElement,
+          details: Array.apply(null, new Array(Math.floor(Math.random() * 24))).map(function(e, i, arr) {
+            return {
+              'name': 'Temp',
+              'date': function () {
+                var tempDate = new Date(dateElement.getTime());
+                tempDate.setHours(Math.floor(Math.random() * 24));
+                tempDate.setMinutes(Math.floor(Math.random() * 60));
+                return tempDate;
+              }(),
+              'value': Math.floor(Math.random() * 20 + 10)
+            }
+          }),
+          init: function () {
+            this.total = this.details.reduce(function (prev, e) {
+              return prev + e.value;
+            }, 0);
+            return this;
+          }
+        }.init();
+      });
+
+      // Set custom color for the calendar heatmap
+      var color = '#2c7bb6'; 
+
+      // Set overview type (choices are year, month and day)
+      var overview = 'global';
+
+      // Handler function
+      var print = function (val) {
+        console.log(val);
+      };
+
+      // Initialize calendar heatmap
+      calendarHeatmap.init(example_data, color, overview, print);
+    })();
+  </script>
+</body>
+</html>

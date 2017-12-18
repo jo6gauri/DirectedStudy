@@ -1,0 +1,269 @@
+.calendar-heatmap {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.calendar-heatmap .svgTop {
+  position: absolute;
+	top: 0px;
+}
+
+.calendar-heatmap .item {
+  cursor: pointer;
+}
+
+.calendar-heatmap .item-line {
+  cursor: pointer;
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.calendar-heatmap .label {
+  cursor: pointer;
+  fill: rgb(170, 170, 170);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+}
+.calendar-heatmap .button {
+  cursor: pointer;
+  fill: transparent;
+  stroke-width: 2;
+  stroke: rgb(170, 170, 170);
+}
+.calendar-heatmap .button text {
+  stroke-width: 1;
+  text-anchor: middle;
+  fill: rgb(170, 170, 170);
+}
+
+.calendar-heatmap .toggle-button {
+  cursor: pointer;  
+  fill: steelblue;
+  stroke-width: 5;
+  stroke: rgb(247, 248, 248);
+}
+.calendar-heatmap .toggle-button text {
+  stroke-width: 1;
+  text-anchor: middle;
+  fill: rgb(255, 255, 255);
+}
+
+.calendar-heatmap .heatmap-tooltip {
+  pointer-events: none;
+  position: absolute;
+  z-index: 9999;
+  width: 250px;
+  max-width: 250px;
+  overflow: hidden;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgb(51, 51, 51);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+  background: rgba(255, 255, 255, 0.75);
+}
+.calendar-heatmap .heatmap-tooltip .header strong {
+  display: inline-block;
+  width: 250px;
+}
+.calendar-heatmap .heatmap-tooltip span {
+  display: inline-block;
+  width: 50%;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.calendar-heatmap .heatmap-tooltip span,
+.calendar-heatmap .heatmap-tooltip .header strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar-heatmap1 {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.calendar-heatmap1 .svgBottom {
+  position: absolute;
+	top: 300px;
+}
+
+.calendar-heatmap1 .item {
+  cursor: pointer;
+}
+.calendar-heatmap1 .label {
+  cursor: pointer;
+  fill: rgb(170, 170, 170);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+}
+.calendar-heatmap1 .button {
+  cursor: pointer;
+  fill: transparent;
+  stroke-width: 2;
+  stroke: rgb(170, 170, 170);
+}
+.calendar-heatmap1 .button text {
+  stroke-width: 1;
+  text-anchor: middle;
+  fill: rgb(170, 170, 170);
+}
+.calendar-heatmap1 .heatmap-tooltip {
+  pointer-events: none;
+  position: absolute;
+  z-index: 9999;
+  width: 250px;
+  max-width: 250px;
+  overflow: hidden;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgb(51, 51, 51);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+  background: rgba(255, 255, 255, 0.75);
+}
+.calendar-heatmap1 .heatmap-tooltip .header strong {
+  display: inline-block;
+  width: 250px;
+}
+.calendar-heatmap1 .heatmap-tooltip span {
+  display: inline-block;
+  width: 50%;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.calendar-heatmap1 .heatmap-tooltip span,
+.calendar-heatmap1 .heatmap-tooltip .header strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar-heatmap-middle-view {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.calendar-heatmap-middle-view .svgMiddleView {
+  position: absolute;
+	top: 200px;
+}
+
+.calendar-heatmap-middle-view .item {
+  cursor: pointer;
+}
+.calendar-heatmap-middle-view .label {
+  cursor: pointer;
+  fill: rgb(170, 170, 170);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+}
+.calendar-heatmap-middle-view .button {
+  cursor: pointer;
+  fill: transparent;
+  stroke-width: 2;
+  stroke: rgb(170, 170, 170);
+}
+.calendar-heatmap-middle-view .button text {
+  stroke-width: 1;
+  text-anchor: middle;
+  fill: rgb(170, 170, 170);
+}
+.calendar-heatmap-middle-view .heatmap-tooltip {
+  pointer-events: none;
+  position: absolute;
+  z-index: 9999;
+  width: 250px;
+  max-width: 250px;
+  overflow: hidden;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgb(51, 51, 51);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+  background: rgba(255, 255, 255, 0.75);
+}
+.calendar-heatmap-middle-view .heatmap-tooltip .header strong {
+  display: inline-block;
+  width: 250px;
+}
+.calendar-heatmap-middle-view .heatmap-tooltip span {
+  display: inline-block;
+  width: 50%;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.calendar-heatmap-middle-view .heatmap-tooltip span,
+.calendar-heatmap-middle-view .heatmap-tooltip .header strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar-heatmap-end-view {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.calendar-heatmap-end-view .svgEndView {
+  position: absolute;
+	top: 450px;
+}
+
+.calendar-heatmap-end-view .item {
+  cursor: pointer;
+}
+.calendar-heatmap-end-view .label {
+  cursor: pointer;
+  fill: rgb(170, 170, 170);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+}
+.calendar-heatmap-end-view .button {
+  cursor: pointer;
+  fill: transparent;
+  stroke-width: 2;
+  stroke: rgb(170, 170, 170);
+}
+.calendar-heatmap-end-view .button text {
+  stroke-width: 1;
+  text-anchor: middle;
+  fill: rgb(170, 170, 170);
+}
+.calendar-heatmap-end-view .heatmap-tooltip {
+  pointer-events: none;
+  position: absolute;
+  z-index: 9999;
+  width: 250px;
+  max-width: 250px;
+  overflow: hidden;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgb(51, 51, 51);
+  font-family: Helvetica, arial, 'Open Sans', sans-serif;
+  background: rgba(255, 255, 255, 0.75);
+}
+.calendar-heatmap-end-view .heatmap-tooltip .header strong {
+  display: inline-block;
+  width: 250px;
+}
+.calendar-heatmap-end-view .heatmap-tooltip span {
+  display: inline-block;
+  width: 50%;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.calendar-heatmap-end-view .heatmap-tooltip span,
+.calendar-heatmap-end-view .heatmap-tooltip .header strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

@@ -26,6 +26,8 @@ var calendarHeatmap = {
     // Set calendar data
     calendarHeatmap.data = data;
 
+    console.log(calendarHeatmap.data.length);
+
     // Set calendar color
     calendarHeatmap.color = color || '#00ccbc';
 
@@ -40,12 +42,13 @@ var calendarHeatmap = {
     // No transition to start with
     calendarHeatmap.in_transition = false;
 
-    // Create html elementsfor the calendar
-    calendarHeatmap.createElements();
-
     // Parse data for summary details
     calendarHeatmap.parseData();
 
+    // Create html elementsfor the calendar
+    calendarHeatmap.createElements();
+
+    console.log(calendarHeatmap.data);
     // Draw the chart
     calendarHeatmap.drawChart();
   },
@@ -93,7 +96,7 @@ var calendarHeatmap = {
       svg.attr('width', calendarHeatmap.settings.width)
         .attr('height', calendarHeatmap.settings.height);
 
-      if (!!calendarHeatmap.data && !!calendarHeatmap.data[0].summary) {
+      if (!!calendarHeatmap.data ) {
         calendarHeatmap.drawChart();
       }
     };
@@ -272,10 +275,10 @@ var calendarHeatmap = {
         var summary = d.details.reduce(function(uniques, project) {
           if (!uniques[project.name]) {
             uniques[project.name] = {
-              'value': project.value
+              'value': parseFloat(project.value)
             };
           } else {
-            uniques[project.name].value += project.value;
+            uniques[project.name].value += parseFloat(project.value);
           }
           return uniques;
         }, {});
@@ -680,7 +683,8 @@ var calendarHeatmap = {
 
         // Calculate Avg. Temp
         var temp = d.total;
-        var avgDayTemp = parseFloat(temp / 24).toFixed(2);        
+        console.log("total temp is *********** " + temp);
+        var avgDayTemp = parseFloat(temp / 288).toFixed(2);        
         
         // Construct tooltip
         var tooltip_html = '';
@@ -899,6 +903,7 @@ var calendarHeatmap = {
         .on('mouseover', function(d) {
           if (calendarHeatmap.in_transition) { return; }
   
+        console.log("Here ------- " + calendarHeatmap.selected.details.value);
         // Construct tooltip
           var tooltip_html = '';
         //  tooltip_html += '<div class="header"><strong>' + d.name + ': </strong><div><br>';

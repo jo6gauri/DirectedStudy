@@ -14,47 +14,75 @@
   <script src="src/calendar-heatmap.js"></script>
 
   <script>
+    var retrievedDetails = new Array(), detailsArray = new Array();
+    var tempDetails = {}, overviewObject = {}, tempDate, total = 0;
+    var pointer = 0, i;
+    
     (function () {
-      // Initialize random data for the demo
-      var now = moment().endOf('day').toDate();
-      var time_ago = moment().startOf('day').subtract(10, 'year').toDate();
-      var example_data = d3.timeDays(time_ago, now).map(function (dateElement, index) {
-        return {
-          date: dateElement,
-          details: Array.apply(null, new Array(Math.floor(Math.random() * 24))).map(function(e, i, arr) {
-            return {
-              'name': 'Temp',
-              'date': function () {
-                var tempDate = new Date(dateElement.getTime());
-                tempDate.setHours(Math.floor(Math.random() * 24));
-                tempDate.setMinutes(Math.floor(Math.random() * 60));
-                return tempDate;
-              }(),
-              'value': Math.floor(Math.random() * 20 + 10)
-            }
-          }),
-          init: function () {
-            this.total = this.details.reduce(function (prev, e) {
-              return prev + e.value;
-            }, 0);
-            return this;
+    
+      var spaceSV = d3.dsvFormat(" ");
+      d3.request("newSB.txt")
+        .mimeType("text/plain")
+        .response(function(xhr) { return spaceSV.parse(xhr.responseText) })
+        .get(function(data) {
+          
+          var latestYear = data[data.length - 1].Date.substring(0,4);
+          var latestMonth = data[data.length - 1].Date.substring(4,6);
+          var latestDay = data[data.length - 1].Date.substring(6,8);
+          var latestDate = new Date(latestYear, latestMonth-1, latestDay);
+        
+          var prevYear = data[1].Date.substring(0,4);
+          var prevMonth = data[1].Date.substring(4,6);
+          var prevDay = data[1].Date.substring(6,8);
+          var prevDate = new Date(prevYear, prevMonth-1, prevDay);
+
+         var localDate;
+         for(var d = prevDate; d <= latestDate; d.setDate(d.getDate() + 1)) {
+
+            detailsArray = new Array();
+            for(i = pointer; (i < pointer + 288 && i < data.length); i++) {
+             
+                tempDate = new Date(moment(data[i].Date, "YYYYMMDD").toDate());
+                tempDate.setHours(data[i].Time.substring(0,2));
+                tempDate.setMinutes(data[i].Time.substring(2,4));
+                
+                tempDetails = {};
+                tempDetails.name = "temp";
+                tempDetails.date = tempDate;
+                tempDetails.value = data[i].Value;
+               
+                total = total + parseFloat(data[i].Value);
+                
+                detailsArray.push(tempDetails);
+
+              }
+             
+              pointer = i;
+            
+              overviewObject = {};
+              overviewObject.date = new Date(d);
+              overviewObject.details = detailsArray;
+              overviewObject.total = total;
+
+              retrievedDetails.push(overviewObject);
+
           }
-        }.init();
+
+          console.log(retrievedDetails[0].details[0].value);
+
+          // Set custom color for the calendar heatmap
+          var color = '#2c7bb6'; 
+
+          // Set overview type (choices are year, month and day)
+          var overview = 'global';
+
+          // // Handler function
+          // var print = function (val) {
+          //   console.log(val);
+          // };
+          
+          calendarHeatmap.init(retrievedDetails, color, overview, print);
       });
-
-      // Set custom color for the calendar heatmap
-      var color = '#2c7bb6'; 
-
-      // Set overview type (choices are year, month and day)
-      var overview = 'global';
-
-      // Handler function
-      var print = function (val) {
-        console.log(val);
-      };
-
-      // Initialize calendar heatmap
-      calendarHeatmap.init(example_data, color, overview, print);
     })();
   </script>
 </body>
